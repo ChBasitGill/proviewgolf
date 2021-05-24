@@ -1,0 +1,104 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\basit.ahmad\\Downloads\\proviewgolf_web\\ProViewGolf\\ProViewGolf.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\basit.ahmad\\Downloads\\proviewgolf_web\\ProViewGolf.Core\\ProViewGolf.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\basit.ahmad\\Downloads\\proviewgolf_web\\ProViewGolf.Core\\ProViewGolf.Core.csproj",
+        "projectName": "ProViewGolf.Core",
+        "projectPath": "C:\\Users\\basit.ahmad\\Downloads\\proviewgolf_web\\ProViewGolf.Core\\ProViewGolf.Core.csproj",
+        "packagesPath": "C:\\Users\\basit.ahmad\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\basit.ahmad\\Downloads\\proviewgolf_web\\ProViewGolf.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\ProgramData\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\basit.ahmad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "C:\\Users\\basit.ahmad\\Downloads\\proviewgolf_web\\ProViewGolf\\ProViewGolf.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\basit.ahmad\\Downloads\\proviewgolf_web\\ProViewGolf\\ProViewGolf.csproj",
+        "projectName": "ProViewGolf",
+        "projectPath": "C:\\Users\\basit.ahmad\\Downloads\\proviewgolf_web\\ProViewGolf\\ProViewGolf.csproj",
+        "packagesPath": "C:\\Users\\basit.ahmad\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\basit.ahmad\\Downloads\\proviewgolf_web\\ProViewGolf\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\ProgramData\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\basit.ahmad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\basit.ahmad\\Downloads\\proviewgolf_web\\ProViewGolf.Core\\ProViewGolf.Core.csproj": {
+                "projectPath": "C:\\Users\\basit.ahmad\\Downloads\\proviewgolf_web\\ProViewGolf.Core\\ProViewGolf.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
