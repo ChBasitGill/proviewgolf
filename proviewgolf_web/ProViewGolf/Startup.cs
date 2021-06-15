@@ -24,12 +24,12 @@ namespace ProViewGolf
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProGolf API", Version = "v1" });
+                c.SwaggerDoc("v2", new OpenApiInfo { Title = "ProGolf API", Version = "v2" });
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Description = "JWT Authorization",
-                    Name = "Authorization",
+                    Description = "JWT Authorization api cbg",
+                    Name = "Authorization ",
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey,
                     Scheme = "Bearer"
