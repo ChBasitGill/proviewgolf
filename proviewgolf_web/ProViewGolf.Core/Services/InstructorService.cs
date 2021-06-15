@@ -77,8 +77,8 @@ namespace ProViewGolf.Core.Services
 
                 invitation.Code = Guid.NewGuid().ToString();
 
-                var acceptLink = @"https://app.proviewgolf.com/api/Auth/Invitation/" + invitation.Code + "/1";
-                var rejectLink = @"https://app.proviewgolf.com/api/Auth/Invitation/" + invitation.Code + "/0";
+                var acceptLink = @"https://proviewgolf-web.azurewebsites.net/api/Auth/Invitation/" + invitation.Code + "/1";
+                var rejectLink = @"https://proviewgolf-web.azurewebsites.net/api/Auth/Invitation/" + invitation.Code + "/0";
 
                 var subject = "ProView Golf Invitation";
                 var body = "Hello Student" + /*student.Profile.FirstName +*/ "!<br/><p>Mr. " +
@@ -118,8 +118,8 @@ namespace ProViewGolf.Core.Services
 
                 invitation.Code = Guid.NewGuid().ToString();
 
-                var acceptLink = @"https://app.proviewgolf.com/api/Auth/Invitation/" + invitation.Code + "/1";
-                var rejectLink = @"https://app.proviewgolf.com/api/Auth/Invitation/" + invitation.Code + "/0";
+                var acceptLink = @"https://proviewgolf-web.azurewebsites.net/api/Auth/Invitation/" + invitation.Code + "/1";
+                var rejectLink = @"https://proviewgolf-web.azurewebsites.net/api/Auth/Invitation/" + invitation.Code + "/0";
                 var subject = "ProView Golf Invitation";
                 var body = "Hello Instructor" + "!<br/><p>Mr. " + student.Profile.FirstName +
                            " has sent you an invitation.</p><br/><a href=" + acceptLink +

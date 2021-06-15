@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace ProViewGolf.Core.Dbo.Entities
 {
@@ -26,4 +28,34 @@ namespace ProViewGolf.Core.Dbo.Entities
         public long StudentId { get; set; }
         [ForeignKey("StudentId")] public virtual Student Student { get; protected set; }
     }
+    public class SkillsAverages {
+        public double Stretching { get; set; }
+        public double FitnessSessionLowerBody { get; set; }
+        public double FitnessSessionUpperBody { get; set; }
+        public double FitnessSessionCore { get; set; }
+        public double MentalTraining { get; set; }
+        public double AlignmentDrill { get; set; }
+        public double GreenReading { get; set; }
+        public double CourseManagement { get; set; }
+        public double RulesQuiz { get; set; }
+        public double VideoSwingAnalysis { get; set; }
+        public double _18HolesWalk { get; set; }
+        public double _9HolesWalk { get; set; }
+        public double _18HolesPlayedWithGolfCar { get; set; }
+    }
+    public class Grouping{
+        public string Text {get;set;}
+        public SkillsAverages Average {get;set;}
+    }
+        public class SkillDto  
+    {
+        public Skill Skill {get;set;}
+        public SkillsAverages Averages {get;set;}
+
+        public IEnumerable<Grouping> MonthlyGrouping {get;set;}
+        public IEnumerable<Grouping> YearlyGrouping {get;set;}
+        public Grouping WeeklyGrouping {get;set;}
+        
+    }
+    
 }

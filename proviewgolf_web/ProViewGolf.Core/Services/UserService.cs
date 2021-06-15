@@ -106,7 +106,7 @@ namespace ProViewGolf.Core.Services
                 else
                     _dbo.Pros.Add(_mapper.Map<Pro>(user));
 
-                var verificationLink = @"https://app.proviewgolf.com/api/Auth/ConfirmEmail/" + user.VerificationToken;
+                var verificationLink = @"https://proviewgolf-web.azurewebsites.net/api/Auth/ConfirmEmail/" + user.VerificationToken;
 
                 var body = @"<b>Dear " + user.Profile.FirstName + " " + user.Profile.LastName + ",</b><br>" +
                            "<p>Please click on the following link or open the link in your browser to confirm your email.</p><a href=" +

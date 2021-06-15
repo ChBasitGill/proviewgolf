@@ -32,7 +32,7 @@ namespace ProViewGolf.Controllers
         {
             var response = new Response
             {
-                Data = _skillService.Skills(model.StudentId, model.Date) ?? new Skill()
+                Data = _skillService.SkillsWithAverage(model.StudentId, model.Date) ?? new SkillDto()
             };
 
             return Ok(response);
