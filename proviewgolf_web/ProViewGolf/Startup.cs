@@ -8,6 +8,9 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using ProViewGolf.Platform;
+using ProViewGolf.Core.Dbo;
+using ProViewGolf.DataLayer;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProViewGolf
 {
@@ -24,12 +27,12 @@ namespace ProViewGolf
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v2", new OpenApiInfo { Title = "ProGolf API", Version = "v2" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProGolf API", Version = "v1" });
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Description = "JWT Authorization api cbg",
-                    Name = "Authorization ",
+                    Description = "JWT Authorization",
+                    Name = "Authorization",
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey,
                     Scheme = "Bearer"
@@ -65,7 +68,6 @@ namespace ProViewGolf
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
                     };
                 });
-
             services.AddProGolfServices();
 
             //var key = Encoding.ASCII.GetBytes("uyity8hHKHKFEf8i87JBjT^kjKJGHKHYtuy*TIUZ*z6*TUtUtUIu");

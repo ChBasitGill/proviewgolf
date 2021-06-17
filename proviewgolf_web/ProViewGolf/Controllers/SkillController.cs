@@ -32,10 +32,20 @@ namespace ProViewGolf.Controllers
         {
             var response = new Response
             {
-                Data = _skillService.SkillsWithAverage(model.StudentId, model.Date) ?? new SkillDto()
+                Data = _skillService.Skills(model.StudentId, model.Date) ?? new Skill()
             };
 
             return Ok(response);
         }
+        [HttpPost]
+        public IActionResult SkillsWithAverage(FilterModel model)
+        {
+            var response = new Response
+            {
+                Data = _skillService.SkillsWithAverage(model.StudentId, model.Date) ?? new SkillDto()
+            };
+
+            return Ok(response);
+        }]
     }
 }

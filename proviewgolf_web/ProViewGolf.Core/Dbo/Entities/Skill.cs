@@ -43,7 +43,7 @@ namespace ProViewGolf.Core.Dbo.Entities
         public double _9HolesWalk { get; set; }
         public double _18HolesPlayedWithGolfCar { get; set; }
     }
-    public class Grouping{
+    public class SkillGrouping{
         public string Text {get;set;}
         public SkillsAverages Average {get;set;}
     }
@@ -52,9 +52,9 @@ namespace ProViewGolf.Core.Dbo.Entities
         public Skill Skill {get;set;}
         public SkillsAverages Averages {get;set;}
 
-        public IEnumerable<Grouping> MonthlyGrouping {get;set;}
-        public IEnumerable<Grouping> YearlyGrouping {get;set;}
-        public Grouping WeeklyGrouping {get;set;}
+        public IEnumerable<SkillGrouping> MonthlyGrouping {get;set;}
+        public IEnumerable<SkillGrouping> YearlyGrouping {get;set;}
+        public SkillGrouping WeeklyGrouping {get;set;}
         
     }
     
