@@ -89,7 +89,7 @@ namespace ProViewGolf.Core.Services
                 },
                 MonthlyGrouping = studentSkills.OrderByDescending(x => x.DateTime).GroupBy(g =>
                   new { g.DateTime.Year, g.DateTime.Month }).
-                Select(s => new Grouping
+                Select(s => new SkillGrouping
                 {
                     Text = string.Format("{1} {0}", s.Key.Year, CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(s.Key.Month)),
                     Average = new SkillsAverages()
@@ -111,7 +111,7 @@ namespace ProViewGolf.Core.Services
                 }),
                 YearlyGrouping = studentSkills.OrderByDescending(x => x.DateTime).GroupBy(g =>
                   new { g.DateTime.Year}).
-                Select(s => new Grouping
+                Select(s => new SkillGrouping
                 {
                     Text = string.Format("{0}", s.Key.Year),
                     Average = new SkillsAverages()
@@ -131,7 +131,7 @@ namespace ProViewGolf.Core.Services
                         _18HolesPlayedWithGolfCar = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x._18HolesPlayedWithGolfCar)
                     }
                 }),
-                WeeklyGrouping =  new Grouping
+                WeeklyGrouping =  new SkillGrouping
                 {
                     Text = date.ToString("dd-MM-yy"),
                     Average = new SkillsAverages()

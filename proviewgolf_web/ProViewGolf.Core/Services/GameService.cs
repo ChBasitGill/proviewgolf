@@ -3,6 +3,8 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using ProViewGolf.Core.Dbo;
 using ProViewGolf.Core.Dbo.Entities;
+using System.Globalization;
+
 
 namespace ProViewGolf.Core.Services
 {
@@ -89,5 +91,182 @@ namespace ProViewGolf.Core.Services
             return _dbo.Games.FirstOrDefault(x =>
                 x.StudentId == studentId && x.DateTime.Date == date.Date && x.GameType == type);
         }
+        public GameDto GamesWithAverage(long studentId, DateTime date, GameType type)
+        {
+            var studentGames = _dbo.Games.Where(x => x.StudentId == studentId && x.GameType == type).ToList();
+            var lastSevenDays = studentGames.Where(x => x.DateTime.Date <= date.Date && x.DateTime.Date >= date.AddDays(-7).Date).ToList();
+            return new GameDto()
+            {
+                Game = studentGames.FirstOrDefault(x => x.DateTime.Date == date.Date.Date) ?? new Game(),
+                Averages = new GamesAverages()
+                {
+                    WarmupTime = studentGames.Average(x => x.WarmupTime),
+                    DriverPeaces = studentGames.Average(x => x.DriverPeaces),
+                    IronPeaces = studentGames.Average(x => x.IronPeaces),
+                    ChipPeaces = studentGames.Average(x => x.ChipPeaces),
+                    SandPeaces = studentGames.Average(x => x.SandPeaces),
+                    PuttPeaces = studentGames.Average(x => x.PuttPeaces),
+                    ExactHcp = studentGames.Average(x => x.ExactHcp),
+                    PlayingHcp = studentGames.Average(x => x.PlayingHcp),
+                    FlightPartnersRating = studentGames.Average(x => x.FlightPartnersRating),
+
+                    DriversRating = studentGames.Average(x => x.DriversRating),
+                    DriversLeft = studentGames.Average(x => x.DriversLeft),
+                    DriversCenter = studentGames.Average(x => x.DriversCenter),
+                    DriversRight = studentGames.Average(x => x.DriversRight),
+
+                    IronsRating = studentGames.Average(x => x.IronsRating),
+                    IronsLeft = studentGames.Average(x => x.IronsLeft),
+                    IronsCenter = studentGames.Average(x => x.IronsCenter),
+                    IronsRight = studentGames.Average(x => x.IronsRight),
+
+                    WoodsRating = studentGames.Average(x => x.WoodsRating),
+                    WoodsLeft = studentGames.Average(x => x.WoodsLeft),
+                    WoodsCenter = studentGames.Average(x => x.WoodsCenter),
+                    WoodsRight = studentGames.Average(x => x.WoodsRight),
+
+                    ShortIronGameRating = studentGames.Average(x => x.ShortIronGameRating),
+                    BunkerShortsRating = studentGames.Average(x => x.BunkerShortsRating),
+                    PuttingStrokes = studentGames.Average(x => x.PuttingStrokes),
+                    GreenSpeedRating = studentGames.Average(x => x.GreenSpeedRating),
+
+                    StableFordPoints = studentGames.Average(x => x.StableFordPoints),
+                    Strokes = studentGames.Average(x => x.Strokes),
+                    NewHcp = studentGames.Average(x => x.NewHcp),
+                    DistanceWalked = studentGames.Average(x => x.DistanceWalked)
+                },
+                MonthlyGrouping = studentGames.OrderByDescending(x => x.DateTime).GroupBy(g =>
+                  new { g.DateTime.Year, g.DateTime.Month }).
+                Select(s => new GamesGrouping
+                {
+                    Text = string.Format("{1} {0}", s.Key.Year, CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(s.Key.Month)),
+                    Average = new GamesAverages()
+                    {
+                        WarmupTime = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.WarmupTime),
+                        DriverPeaces = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.DriverPeaces),
+                        IronPeaces = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.IronPeaces),
+                        ChipPeaces = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.ChipPeaces),
+                        SandPeaces = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.SandPeaces),
+                        PuttPeaces = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.PuttPeaces),
+                        ExactHcp = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.ExactHcp),
+                        PlayingHcp = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.PlayingHcp),
+                        FlightPartnersRating = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.FlightPartnersRating),
+
+                        DriversRating = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.DriversRating),
+                        DriversLeft = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.DriversLeft),
+                        DriversCenter = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.DriversCenter),
+                        DriversRight = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.DriversRight),
+
+                        IronsRating = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.IronsRating),
+                        IronsLeft = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.IronsLeft),
+                        IronsCenter = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.IronsCenter),
+                        IronsRight = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.IronsRight),
+
+                        WoodsRating = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.WoodsRating),
+                        WoodsLeft = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.WoodsLeft),
+                        WoodsCenter = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.WoodsCenter),
+                        WoodsRight = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.WoodsRight),
+
+                        ShortIronGameRating = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.ShortIronGameRating),
+                        BunkerShortsRating = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.BunkerShortsRating),
+                        PuttingStrokes = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.PuttingStrokes),
+                        GreenSpeedRating = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.GreenSpeedRating),
+
+                        StableFordPoints = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.StableFordPoints),
+                        Strokes = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.Strokes),
+                        NewHcp = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.NewHcp),
+                        DistanceWalked = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.DistanceWalked)
+                    }
+                }),
+                YearlyGrouping = studentGames.OrderByDescending(x => x.DateTime).GroupBy(g =>
+                  new { g.DateTime.Year }).
+                Select(s => new GamesGrouping
+                {
+                    Text = string.Format("{0}", s.Key.Year),
+                    Average = new GamesAverages()
+                    {
+                        WarmupTime = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.WarmupTime),
+                        DriverPeaces = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.DriverPeaces),
+                        IronPeaces = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.IronPeaces),
+                        ChipPeaces = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.ChipPeaces),
+                        SandPeaces = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.SandPeaces),
+                        PuttPeaces = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.PuttPeaces),
+                        ExactHcp = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.ExactHcp),
+                        PlayingHcp = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.PlayingHcp),
+                        FlightPartnersRating = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.FlightPartnersRating),
+
+                        DriversRating = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.DriversRating),
+                        DriversLeft = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.DriversLeft),
+                        DriversCenter = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.DriversCenter),
+                        DriversRight = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.DriversRight),
+
+                        IronsRating = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.IronsRating),
+                        IronsLeft = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.IronsLeft),
+                        IronsCenter = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.IronsCenter),
+                        IronsRight = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.IronsRight),
+
+                        WoodsRating = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.WoodsRating),
+                        WoodsLeft = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.WoodsLeft),
+                        WoodsCenter = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.WoodsCenter),
+                        WoodsRight = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.WoodsRight),
+
+                        ShortIronGameRating = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.ShortIronGameRating),
+                        BunkerShortsRating = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.BunkerShortsRating),
+                        PuttingStrokes = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.PuttingStrokes),
+                        GreenSpeedRating = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.GreenSpeedRating),
+
+                        StableFordPoints = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.StableFordPoints),
+                        Strokes = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.Strokes),
+                        NewHcp = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.NewHcp),
+                        DistanceWalked = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.DistanceWalked)
+
+                    }
+                }),
+                WeeklyGrouping = new GamesGrouping
+                {
+                    Text = date.ToString("dd-MM-yy"),
+                    Average = new GamesAverages()
+
+                    {
+                        WarmupTime = lastSevenDays.Average(x => x.WarmupTime),
+                        DriverPeaces = lastSevenDays.Average(x => x.DriverPeaces),
+                        IronPeaces = lastSevenDays.Average(x => x.IronPeaces),
+                        ChipPeaces = lastSevenDays.Average(x => x.ChipPeaces),
+                        SandPeaces = lastSevenDays.Average(x => x.SandPeaces),
+                        PuttPeaces = lastSevenDays.Average(x => x.PuttPeaces),
+                        ExactHcp = lastSevenDays.Average(x => x.ExactHcp),
+                        PlayingHcp = lastSevenDays.Average(x => x.PlayingHcp),
+                        FlightPartnersRating = lastSevenDays.Average(x => x.FlightPartnersRating),
+
+                        DriversRating = lastSevenDays.Average(x => x.DriversRating),
+                        DriversLeft = lastSevenDays.Average(x => x.DriversLeft),
+                        DriversCenter = lastSevenDays.Average(x => x.DriversCenter),
+                        DriversRight = lastSevenDays.Average(x => x.DriversRight),
+
+                        IronsRating = lastSevenDays.Average(x => x.IronsRating),
+                        IronsLeft = lastSevenDays.Average(x => x.IronsLeft),
+                        IronsCenter = lastSevenDays.Average(x => x.IronsCenter),
+                        IronsRight = lastSevenDays.Average(x => x.IronsRight),
+
+                        WoodsRating = lastSevenDays.Average(x => x.WoodsRating),
+                        WoodsLeft = lastSevenDays.Average(x => x.WoodsLeft),
+                        WoodsCenter = lastSevenDays.Average(x => x.WoodsCenter),
+                        WoodsRight = lastSevenDays.Average(x => x.WoodsRight),
+
+                        ShortIronGameRating = lastSevenDays.Average(x => x.ShortIronGameRating),
+                        BunkerShortsRating = lastSevenDays.Average(x => x.BunkerShortsRating),
+                        PuttingStrokes = lastSevenDays.Average(x => x.PuttingStrokes),
+                        GreenSpeedRating = lastSevenDays.Average(x => x.GreenSpeedRating),
+
+                        StableFordPoints = lastSevenDays.Average(x => x.StableFordPoints),
+                        Strokes = lastSevenDays.Average(x => x.Strokes),
+                        NewHcp = lastSevenDays.Average(x => x.NewHcp),
+                        DistanceWalked = lastSevenDays.Average(x => x.DistanceWalked)
+
+                    }
+                }
+            };
+        }
+
     }
 }
