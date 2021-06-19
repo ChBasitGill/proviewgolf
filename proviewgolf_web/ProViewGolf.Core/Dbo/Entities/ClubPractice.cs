@@ -76,7 +76,8 @@ namespace ProViewGolf.Core.Dbo.Entities
         //public ClubRecord RecordWithPro { get; set; } = new ClubRecord();
 
         public long StudentId { get; set; }
-        [ForeignKey("StudentId")] public virtual Student Student { get; protected set; }
+        //[ForeignKey("StudentId")] 
+        public virtual Student Student { get; protected set; }
 
 
         //public float AvgDistance { get; set; } = 0.0f;

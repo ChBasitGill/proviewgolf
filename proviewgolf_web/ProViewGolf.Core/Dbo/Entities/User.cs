@@ -49,7 +49,8 @@ namespace ProViewGolf.Core.Dbo.Entities
         public int ProViewLevel { get; set; } = 0;
 
         public long ProRefId { get; set; }
-        [ForeignKey("ProRefId")] public virtual Pro Pro { get; set; }
+       // [ForeignKey("ProRefId")] 
+        public virtual Pro Pro { get; set; }
 
         //public long UserRefId { get; set; }
         //[ForeignKey("UserRefId")] public virtual User User { get; set; }

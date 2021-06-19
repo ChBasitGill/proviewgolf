@@ -11,9 +11,11 @@ namespace ProViewGolf.Core.Dbo.Entities
         public DateTime End { get; set; } = DateTime.UtcNow;
 
         public long StudentRefId { get; set; }
-        [ForeignKey("StudentRefId")] public virtual Student Student { get; protected set; }
+      //  [ForeignKey("StudentRefId")] /
+        public virtual Student Student { get; protected set; }
 
         public long ProRefId { get; set; }
-        [ForeignKey("ProRefId")] public virtual Pro Pro { get; protected set; }
+        //[ForeignKey("ProRefId")]
+         public virtual Pro Pro { get; protected set; }
     }
 }

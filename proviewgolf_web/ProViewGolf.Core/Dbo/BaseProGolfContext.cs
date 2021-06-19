@@ -17,6 +17,7 @@ namespace ProViewGolf.Core.Dbo
         public DbSet<User> Users { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Pro> Pros { get; set; }
+        public DbSet<Review> Reviews { get; set; }
     }
 
     public static class DbSetExtensions

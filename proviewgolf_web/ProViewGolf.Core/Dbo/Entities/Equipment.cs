@@ -56,6 +56,7 @@ namespace ProViewGolf.Core.Dbo.Entities
         public int Pieces { get; set; } = 0;
 
         public long StudentId { get; set; }
-        [ForeignKey("StudentId"), JsonIgnore] public virtual Student Student { get; protected set; }
+       // [ForeignKey("StudentId"), JsonIgnore] 
+        public virtual Student Student { get; protected set; }
     }
 }
