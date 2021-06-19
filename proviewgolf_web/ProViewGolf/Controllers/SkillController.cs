@@ -46,6 +46,6 @@ namespace ProViewGolf.Controllers
             };
 
             return Ok(response);
-        }]
+        }
     }
 }

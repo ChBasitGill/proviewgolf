@@ -26,7 +26,8 @@ namespace ProViewGolf.Core.Dbo.Entities
         public int _18HolesPlayedWithGolfCar { get; set; }
 
         public long StudentId { get; set; }
-        [ForeignKey("StudentId")] public virtual Student Student { get; protected set; }
+        //[ForeignKey("StudentId")] 
+        public virtual Student Student { get; protected set; }
     }
     public class SkillsAverages {
         public double Stretching { get; set; }

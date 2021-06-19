@@ -12,6 +12,8 @@ namespace ProViewGolf.Core.Platform
             CreateMap<ShotRecordModel, ShotPractice>().ReverseMap();
 
             CreateMap<User, LoginModel>();
+            CreateMap<Review, ReviewModel>();
+            CreateMap<ReviewModel, Review>();
 
             CreateMap<User, Student>();
             CreateMap<User, Pro>();

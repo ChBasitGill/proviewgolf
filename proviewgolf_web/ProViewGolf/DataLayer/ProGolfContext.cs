@@ -16,8 +16,8 @@ namespace ProViewGolf.DataLayer
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL(_configuration.GetConnectionString("Default"));
-           // optionsBuilder.UseSqlServer(_configuration.GetConnectionString("Default"));
+            //optionsBuilder.UseMySQL(_configuration.GetConnectionString("Default"));
+           optionsBuilder.UseSqlServer(_configuration.GetConnectionString("Default"));
             base.OnConfiguring(optionsBuilder);
         }
     }

@@ -7,18 +7,19 @@ namespace ProViewGolf.Core.Dbo
 {
     public interface IProGolfContext
     {
-        public DbSet<ClubPractice> ClubPractices { get; set; }
-        public DbSet<ShotPractice> ShotPractices { get; set; }
-        public DbSet<Session> Sessions { get; set; }
+        DbSet<ClubPractice> ClubPractices { get; set; }
+        DbSet<ShotPractice> ShotPractices { get; set; }
+        DbSet<Session> Sessions { get; set; }
 
-        public DbSet<Skill> Skills { get; set; }
-        public DbSet<Game> Games { get; set; }
-        public DbSet<Equipment> Equipments { get; set; }
-        public DbSet<Invitation> Invitations { get; set; }
+        DbSet<Skill> Skills { get; set; }
+        DbSet<Game> Games { get; set; }
+        DbSet<Equipment> Equipments { get; set; }
+        DbSet<Invitation> Invitations { get; set; }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Pro> Pros { get; set; }
+        DbSet<User> Users { get; set; }
+        DbSet<Student> Students { get; set; }
+        DbSet<Pro> Pros { get; set; }
+        DbSet<Review> Reviews { get; set; }
 
 
         // DbContext Methods **************************************************************************
