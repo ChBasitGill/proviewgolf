@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProViewGolf.Core.Services;
 using ProViewGolf.DataLayer.Models;
@@ -43,18 +42,6 @@ namespace ProViewGolf.Controllers
             };
 
             return Ok(response);
-        }
-        [HttpGet("{studentId}/{proId}")]
-        public IActionResult Sessions(long studentId,long proId){
-            var r = _sessionService.Session(proId,studentId, out var msg);
-            var response = new Response
-            {
-                Msg = msg, 
-                Data =r ?? new List<Core.Dbo.Entities.Session>(),
-                Status = r !=null ? ResponseStatus.Success : ResponseStatus.Error
-            };
-
-            return Ok(response);    
         }
     }
 }

@@ -20,6 +20,7 @@ namespace ProViewGolf.Core.Dbo
         DbSet<Student> Students { get; set; }
         DbSet<Pro> Pros { get; set; }
         DbSet<Review> Reviews { get; set; }
+        DbSet<Booking> Bookings { get; set; }
 
 
         // DbContext Methods **************************************************************************

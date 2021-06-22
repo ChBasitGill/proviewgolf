@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using ProViewGolf.Core.Dbo;
 using ProViewGolf.Core.Dbo.Entities;
@@ -38,20 +37,7 @@ namespace ProViewGolf.Core.Services
                 return 0;
             }
         }
-        public List<Session> Session(long proId, long studentId, out string msg)
-        {
-            msg = "session data"; 
 
-            try
-            {
-              return  _dbo.Sessions.Where(x=>x.StudentRefId == studentId && x.ProRefId == proId).ToList();
-            }
-            catch (Exception ex)
-            {
-                msg = ex.Message;
-                return null;
-            }
-        }
         public bool EndSession(long sessionId, out string msg)
         {
             try

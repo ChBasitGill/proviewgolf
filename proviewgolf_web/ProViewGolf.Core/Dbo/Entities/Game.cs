@@ -23,44 +23,44 @@ namespace ProViewGolf.Core.Dbo.Entities
         [Key] public long GameId { get; set; }
         public DateTime DateTime { get; set; } = DateTime.Now;
         public GameType GameType { get; set; }
-        public int WarmupTime { get; set; }
-        public int DriverPeaces { get; set; }
-        public int IronPeaces { get; set; }
-        public int ChipPeaces { get; set; }
-        public int SandPeaces { get; set; }
-        public int PuttPeaces { get; set; }
+        public decimal WarmupTime { get; set; }
+        public decimal DriverPeaces { get; set; }
+        public decimal IronPeaces { get; set; }
+        public decimal ChipPeaces { get; set; }
+        public decimal SandPeaces { get; set; }
+        public decimal PuttPeaces { get; set; }
         public string GolfCourse { get; set; }
-        public double ExactHcp { get; set; }
-        public int PlayingHcp { get; set; }
+        public decimal ExactHcp { get; set; }
+        public decimal PlayingHcp { get; set; }
         public bool Nervous { get; set; }
-        public double FlightPartnersRating { get; set; }
+        public decimal FlightPartnersRating { get; set; }
 
-        public double DriversRating { get; set; }
-        public int DriversLeft { get; set; }
-        public int DriversCenter { get; set; }
-        public int DriversRight { get; set; }
+        public decimal DriversRating { get; set; }
+        public decimal DriversLeft { get; set; }
+        public decimal DriversCenter { get; set; }
+        public decimal DriversRight { get; set; }
 
-        public double IronsRating { get; set; }
-        public int IronsLeft { get; set; }
-        public int IronsCenter { get; set; }
-        public int IronsRight { get; set; }
+        public decimal IronsRating { get; set; }
+        public decimal IronsLeft { get; set; }
+        public decimal IronsCenter { get; set; }
+        public decimal IronsRight { get; set; }
 
-        public double WoodsRating { get; set; }
-        public int WoodsLeft { get; set; }
-        public int WoodsCenter { get; set; }
-        public int WoodsRight { get; set; }
+        public decimal WoodsRating { get; set; }
+        public decimal WoodsLeft { get; set; }
+        public decimal WoodsCenter { get; set; }
+        public decimal WoodsRight { get; set; }
 
-        public double ShortIronGameRating { get; set; }
-        public double BunkerShortsRating { get; set; }
-        public int PuttingStrokes { get; set; }
-        public double GreenSpeedRating { get; set; }
+        public decimal ShortIronGameRating { get; set; }
+        public decimal BunkerShortsRating { get; set; }
+        public decimal PuttingStrokes { get; set; }
+        public decimal GreenSpeedRating { get; set; }
 
-        public int StableFordPoints { get; set; }
-        public int Strokes { get; set; }
-        public double NewHcp { get; set; }
+        public decimal StableForPoints { get; set; }
+        public decimal Strokes { get; set; }
+        public decimal NewHcp { get; set; }
         public bool Walking { get; set; }
-        public int DistanceWalked { get; set; }
-        public int GameDuration { get; set; }
+        public decimal DistanceWalked { get; set; }
+        public decimal GameDuration { get; set; }
         public Holes Holes { get; set; }
 
         public long StudentId { get; set; }
@@ -69,40 +69,40 @@ namespace ProViewGolf.Core.Dbo.Entities
     }
 public class GamesAverages
     {
-        public double WarmupTime { get; set; }
-        public double DriverPeaces { get; set; }
-        public double IronPeaces { get; set; }
-        public double ChipPeaces { get; set; }
-        public double SandPeaces { get; set; }
-        public double PuttPeaces { get; set; }
-        public double ExactHcp { get; set; }
-        public double PlayingHcp { get; set; }
-        public double FlightPartnersRating { get; set; }
+        public decimal WarmupTime { get; set; }
+        public decimal DriverPeaces { get; set; }
+        public decimal IronPeaces { get; set; }
+        public decimal ChipPeaces { get; set; }
+        public decimal SandPeaces { get; set; }
+        public decimal PuttPeaces { get; set; }
+        public decimal ExactHcp { get; set; }
+        public decimal PlayingHcp { get; set; }
+        public decimal FlightPartnersRating { get; set; }
 
-        public double DriversRating { get; set; }
-        public double DriversLeft { get; set; }
-        public double DriversCenter { get; set; }
-        public double DriversRight { get; set; }
+        public decimal DriversRating { get; set; }
+        public decimal DriversLeft { get; set; }
+        public decimal DriversCenter { get; set; }
+        public decimal DriversRight { get; set; }
 
-        public double IronsRating { get; set; }
-        public double IronsLeft { get; set; }
-        public double IronsCenter { get; set; }
-        public double IronsRight { get; set; }
+        public decimal IronsRating { get; set; }
+        public decimal IronsLeft { get; set; }
+        public decimal IronsCenter { get; set; }
+        public decimal IronsRight { get; set; }
 
-        public double WoodsRating { get; set; }
-        public double WoodsLeft { get; set; }
-        public double WoodsCenter { get; set; }
-        public double WoodsRight { get; set; }
+        public decimal WoodsRating { get; set; }
+        public decimal WoodsLeft { get; set; }
+        public decimal WoodsCenter { get; set; }
+        public decimal WoodsRight { get; set; }
 
-        public double ShortIronGameRating { get; set; }
-        public double BunkerShortsRating { get; set; }
-        public double PuttingStrokes { get; set; }
-        public double GreenSpeedRating { get; set; }
+        public decimal ShortIronGameRating { get; set; }
+        public decimal BunkerShortsRating { get; set; }
+        public decimal PuttingStrokes { get; set; }
+        public decimal GreenSpeedRating { get; set; }
 
-        public double StableFordPoints { get; set; }
-        public double Strokes { get; set; }
-        public double NewHcp { get; set; }
-        public double DistanceWalked { get; set; }
+        public decimal StableForPoints { get; set; }
+        public decimal Strokes { get; set; }
+        public decimal NewHcp { get; set; }
+        public decimal DistanceWalked { get; set; }
 
     }
 

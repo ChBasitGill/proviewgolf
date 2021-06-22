@@ -58,7 +58,7 @@ namespace ProViewGolf.Core.Services
                 //    entity.BunkerShortsRating = game.BunkerShortsRating;
                 //    entity.PuttingStrokes = game.PuttingStrokes;
                 //    entity.GreenSpeedRating = game.GreenSpeedRating;
-                //    entity.StableFordPoints = game.StableFordPoints;
+                //    entity.StableForPoints = game.StableForPoints;
                 //    entity.Strokes = game.Strokes;
                 //    entity.NewHcp = game.NewHcp;
                 //    entity.Walking = game.Walking;
@@ -130,7 +130,7 @@ namespace ProViewGolf.Core.Services
                     PuttingStrokes = studentGames.Average(x => x.PuttingStrokes),
                     GreenSpeedRating = studentGames.Average(x => x.GreenSpeedRating),
 
-                    StableFordPoints = studentGames.Average(x => x.StableFordPoints),
+                    StableForPoints = studentGames.Average(x => x.StableForPoints),
                     Strokes = studentGames.Average(x => x.Strokes),
                     NewHcp = studentGames.Average(x => x.NewHcp),
                     DistanceWalked = studentGames.Average(x => x.DistanceWalked)
@@ -172,7 +172,7 @@ namespace ProViewGolf.Core.Services
                         PuttingStrokes = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.PuttingStrokes),
                         GreenSpeedRating = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.GreenSpeedRating),
 
-                        StableFordPoints = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.StableFordPoints),
+                        StableForPoints = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.StableForPoints),
                         Strokes = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.Strokes),
                         NewHcp = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.NewHcp),
                         DistanceWalked = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Average(x => x.DistanceWalked)
@@ -215,7 +215,7 @@ namespace ProViewGolf.Core.Services
                         PuttingStrokes = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.PuttingStrokes),
                         GreenSpeedRating = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.GreenSpeedRating),
 
-                        StableFordPoints = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.StableFordPoints),
+                        StableForPoints = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.StableForPoints),
                         Strokes = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.Strokes),
                         NewHcp = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.NewHcp),
                         DistanceWalked = studentGames.Where(x => x.DateTime.Date.Year == s.Key.Year).Average(x => x.DistanceWalked)
@@ -258,7 +258,7 @@ namespace ProViewGolf.Core.Services
                         PuttingStrokes = lastSevenDays.Average(x => x.PuttingStrokes),
                         GreenSpeedRating = lastSevenDays.Average(x => x.GreenSpeedRating),
 
-                        StableFordPoints = lastSevenDays.Average(x => x.StableFordPoints),
+                        StableForPoints = lastSevenDays.Average(x => x.StableForPoints),
                         Strokes = lastSevenDays.Average(x => x.Strokes),
                         NewHcp = lastSevenDays.Average(x => x.NewHcp),
                         DistanceWalked = lastSevenDays.Average(x => x.DistanceWalked)
