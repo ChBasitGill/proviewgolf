@@ -83,8 +83,8 @@ namespace ProViewGolf.Core.Services
                 RoundsPlayed = games.Count(x => x.GameType == GameType.PlayRounds),
                 DistanceWalked = games.Sum(x => x.DistanceWalked),
                 HCPImprovement = games.OrderByDescending(x => x.GameId).FirstOrDefault()?.NewHcp ?? 0,
-                StrokesImprovement = games.Any() ? games.Average(a => a.Strokes).Round(1) : 0,
-                PuttingImprovement = games.Any() ? games.Average(a => a.PuttingStrokes).Round(1) : 0
+                StrokesImprovement = games.Any() ? games.Average(a => a.Strokes) : 0,
+                PuttingImprovement = games.Any() ? games.Average(a => a.PuttingStrokes): 0
             };
         }
     }

@@ -25,6 +25,7 @@ namespace ProViewGolf.Core.Platform
             services.AddScoped<StatisticsService>();
             services.AddScoped<UserService>();
             services.AddScoped<ReviewService>();
+            services.AddScoped<BookingService>();
 
             return services;
         }
