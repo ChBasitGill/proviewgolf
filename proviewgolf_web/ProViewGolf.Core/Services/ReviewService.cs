@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using ProViewGolf.Core.Dbo;
 using ProViewGolf.Core.Dbo.Entities;
 using System.Globalization;
+using System.Collections.Generic;
+using ProViewGolf.Core.Dbo.Models;
 
 namespace ProViewGolf.Core.Services
 {
@@ -87,4 +89,39 @@ namespace ProViewGolf.Core.Services
             return Decimal.Divide(sum,24);
         }
     }
+    public class InvitationService
+    {
+        private readonly IProGolfContext _dbo;
+
+        public InvitationService(IProGolfContext context)
+        {
+            _dbo = context;
+        }
+
+
+        public List<InvitationModel> InvitationsDetails(long studentId)
+        {
+            // its working here
+            var data = new List<InvitationModel>();
+            var pros = _dbo.Pros.AsNoTracking();
+
+            var studentEmail = _dbo.Students.Find(studentId).Email;
+            var proEmail = _dbo.Pros.Find(studentId).Email;
+
+            var result = _dbo.Invitations.Where(x => x.StudentEmail == studentEmail).AsNoTracking();
+            foreach (var item in result)
+            {
+                data.Add(new InvitationModel()
+                {
+                    Code = item.Code,
+                    InstructorEmail = item.InstructorEmail,
+                    Status = item.Status,
+                    StudentEmail = item.StudentEmail,
+                    Pro = pros.FirstOrDefault(x=>x.Email== item.InstructorEmail)
+                });
+            }
+            return data;
+        }
+    }
+    
 }
