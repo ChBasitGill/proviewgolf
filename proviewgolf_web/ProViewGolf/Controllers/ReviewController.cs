@@ -43,5 +43,15 @@ namespace ProViewGolf.Controllers
 
             return Ok(response);
         }
+        [HttpGet("{studentId}/{proId}")]
+        public IActionResult ReviewAverage(long studentId, long proId)
+        {
+            var response = new Response
+            {
+                Data = _service.ReviewAverage(studentId, proId)
+            };
+
+            return Ok(response);
+        }
     }
 }

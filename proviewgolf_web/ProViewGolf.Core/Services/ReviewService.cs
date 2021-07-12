@@ -42,5 +42,49 @@ namespace ProViewGolf.Core.Services
             // its working here
             return _dbo.Reviews.FirstOrDefault(x => x.StudentRefId == studentId && x.ProRefId == proid);
         }
+        public decimal ReviewAverage(long studentId, long proid)
+        {
+            // its working here
+            var review = _dbo.Reviews.FirstOrDefault(x => x.StudentRefId == studentId && x.ProRefId == proid);
+            if(review == null)
+            {
+                return 0;
+            }
+            var sum =review.Alignment +
+                review.BackspinControl +
+                review.BallPosition +
+                review.Blocking +
+                review.Bowing +
+                review.Concentration +
+                review.ControlBall +
+                review.CourseManagement +
+                review.Dipping +
+                review.Etiquette +
+                review.FinishPosition +
+                review.Fitness +
+                review.Flexibility +
+                review.Folding +
+                review.FollowThrough +
+                review.GolfRules +
+                review.Grip +
+                review.GripPressure +
+                review.HandPosition +
+                review.HeadMovement +
+                review.LawBallFight +
+                review.Lifting +
+                review.Looping +
+                review.MentalStrength +
+                review.Overswinging +
+                review.PaceOfGame +
+                review.PlayingPunch +
+                review.PuttingTechnique +
+                review.Realease +
+                review.ReverseWeight +
+                review.Stance +
+                review.SwippingTheBall +
+                review.TakeAway +
+                review.WeightTransfer;
+            return Decimal.Divide(sum,24);
+        }
     }
 }

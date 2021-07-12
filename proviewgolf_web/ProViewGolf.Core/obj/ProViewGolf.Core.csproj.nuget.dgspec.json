@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\basit.ahmad\\Downloads\\proviewgolf_web\\ProViewGolf.Core\\ProViewGolf.Core.csproj": {}
+    "C:\\Users\\chbas\\Documents\\proviewgolf\\proviewgolf_web\\ProViewGolf.Core\\ProViewGolf.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\basit.ahmad\\Downloads\\proviewgolf_web\\ProViewGolf.Core\\ProViewGolf.Core.csproj": {
+    "C:\\Users\\chbas\\Documents\\proviewgolf\\proviewgolf_web\\ProViewGolf.Core\\ProViewGolf.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\basit.ahmad\\Downloads\\proviewgolf_web\\ProViewGolf.Core\\ProViewGolf.Core.csproj",
+        "projectUniqueName": "C:\\Users\\chbas\\Documents\\proviewgolf\\proviewgolf_web\\ProViewGolf.Core\\ProViewGolf.Core.csproj",
         "projectName": "ProViewGolf.Core",
-        "projectPath": "C:\\Users\\basit.ahmad\\Downloads\\proviewgolf_web\\ProViewGolf.Core\\ProViewGolf.Core.csproj",
-        "packagesPath": "C:\\Users\\basit.ahmad\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\basit.ahmad\\Downloads\\proviewgolf_web\\ProViewGolf.Core\\obj\\",
+        "projectPath": "C:\\Users\\chbas\\Documents\\proviewgolf\\proviewgolf_web\\ProViewGolf.Core\\ProViewGolf.Core.csproj",
+        "packagesPath": "C:\\Users\\chbas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chbas\\Documents\\proviewgolf\\proviewgolf_web\\ProViewGolf.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\ProgramData\\Xamarin\\NuGet\\",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\basit.ahmad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\chbas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -31,6 +31,7 @@
         },
         "frameworks": {
           "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
             "projectReferences": {}
           }
         },
@@ -42,11 +43,45 @@
       },
       "frameworks": {
         "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[2.10.1, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            }
+          },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
