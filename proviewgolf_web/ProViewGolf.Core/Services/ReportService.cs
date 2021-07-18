@@ -67,7 +67,7 @@ namespace ProViewGolf.Core.Services
                 ChipRun = chipRun.Sum(i => i.Shots),
                 ChipRunRating = chipRun.Average(i => i.Rating, 1),
 
-                OnCourse = shots.Sum(i => i.Shots),
+                OnCourse = onCourse.Sum(i => i.Shots),
 
                 BunkerShots = bunker.Sum(i => i.Shots),
                 BunkerRating = bunker.Average(i => i.Rating, 1),

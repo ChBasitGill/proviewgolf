@@ -1,5 +1,10 @@
 ﻿using ProViewGolf.DataLayer.Models;
 using ProViewGolf.Core.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using ProViewGolf.Core.Dbo.Entities;
+using AutoMapper;
+using ProViewGolf.Core.Dbo.Models;
 
 namespace ProViewGolf.Controllers
 {

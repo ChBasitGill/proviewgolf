@@ -26,6 +26,48 @@ namespace ProViewGolf.Core.Services
 
                 model.ReviewId = entity?.ReviewId ?? 0;
                 _dbo.Reviews.AddOrUpdate(model, model.ReviewId);
+                 
+                var sum  =model.Alignment +
+                model.BackspinControl +
+                model.BallPosition +
+                model.Blocking +
+                model.Bowing +
+                model.Concentration +
+                model.ControlBall +
+                model.CourseManagement +
+                model.Dipping +
+                model.Etiquette +
+                model.FinishPosition +
+                model.Fitness +
+                model.Flexibility +
+                model.Folding +
+                model.FollowThrough +
+                model.GolfRules +
+                model.Grip +
+                model.GripPressure +
+                model.HandPosition +
+                model.HeadMovement +
+                model.LawBallFight +
+                model.Lifting +
+                model.Looping +
+                model.MentalStrength +
+                model.Overswinging +
+                model.PaceOfGame +
+                model.PlayingPunch +
+                model.PuttingTechnique +
+                model.Realease +
+                model.ReverseWeight +
+                model.Stance +
+                model.SwippingTheBall +
+                model.TakeAway +
+                model.WeightTransfer;
+                var proViewLevel = Decimal.Divide(sum,24);
+
+
+                var studentData = _dbo.Students.Find(model.StudentRefId);
+                studentData.ProViewLevel = (int)proViewLevel;
+                _dbo.Students.AddOrUpdate(studentData, model.StudentRefId);
+                
 
                 msg = "Review updated successfully";
                 _dbo.SaveChanges();
