@@ -154,5 +154,95 @@ namespace ProViewGolf.Core.Services
                 }
             };
         }
+        public SkillDto SkillsWithSum(long studentId, DateTime date)
+        {
+            var studentSkills = _dbo.Skills.Where(x => x.StudentId == studentId).ToList();
+            var lastSevenDays = studentSkills.Where(x => x.DateTime.Date <= date.Date && x.DateTime.Date  >= date.AddDays(-7).Date).ToList();
+            return new SkillDto()
+            {
+                Skill = studentSkills.FirstOrDefault(x => x.DateTime.Date == date.Date.Date) ?? new Skill(),
+                Averages = new SkillsAverages()
+                {
+                    Stretching = studentSkills.Sum(x => x.Stretching),
+                    FitnessSessionLowerBody = studentSkills.Sum(x => x.FitnessSessionLowerBody),
+                    FitnessSessionUpperBody = studentSkills.Sum(x => x.FitnessSessionUpperBody),
+                    FitnessSessionCore = studentSkills.Sum(x => x.FitnessSessionCore),
+                    MentalTraining = studentSkills.Sum(x => x.MentalTraining),
+                    AlignmentDrill = studentSkills.Sum(x => x.AlignmentDrill),
+                    GreenReading = studentSkills.Sum(x => x.GreenReading),
+                    CourseManagement = studentSkills.Sum(x => x.CourseManagement),
+                    RulesQuiz = studentSkills.Sum(x => x.RulesQuiz),
+                    VideoSwingAnalysis = studentSkills.Sum(x => x.VideoSwingAnalysis),
+                    _18HolesWalk = studentSkills.Sum(x => x._18HolesWalk),
+                    _9HolesWalk = studentSkills.Sum(x => x._9HolesWalk),
+                    _18HolesPlayedWithGolfCar = studentSkills.Sum(x => x._18HolesPlayedWithGolfCar)
+                },
+                MonthlyGrouping = studentSkills.OrderByDescending(x => x.DateTime).GroupBy(g =>
+                  new { g.DateTime.Year, g.DateTime.Month }).
+                Select(s => new SkillGrouping
+                {
+                    Text = string.Format("{1} {0}", s.Key.Year, CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(s.Key.Month)),
+                    Average = new SkillsAverages()
+                    {
+                        Stretching = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Sum(x => x.Stretching),
+                        FitnessSessionLowerBody = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Sum(x => x.FitnessSessionLowerBody),
+                        FitnessSessionUpperBody = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Sum(x => x.FitnessSessionUpperBody),
+                        FitnessSessionCore = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Sum(x => x.FitnessSessionCore),
+                        MentalTraining = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Sum(x => x.MentalTraining),
+                        AlignmentDrill = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Sum(x => x.AlignmentDrill),
+                        GreenReading = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Sum(x => x.GreenReading),
+                        CourseManagement = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Sum(x => x.CourseManagement),
+                        RulesQuiz = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Sum(x => x.RulesQuiz),
+                        VideoSwingAnalysis = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Sum(x => x.VideoSwingAnalysis),
+                        _18HolesWalk = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Sum(x => x._18HolesWalk),
+                        _9HolesWalk = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Sum(x => x._9HolesWalk),
+                        _18HolesPlayedWithGolfCar = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year && x.DateTime.Date.Month == s.Key.Month).Sum(x => x._18HolesPlayedWithGolfCar)
+                    }
+                }),
+                YearlyGrouping = studentSkills.OrderByDescending(x => x.DateTime).GroupBy(g =>
+                  new { g.DateTime.Year}).
+                Select(s => new SkillGrouping
+                {
+                    Text = string.Format("{0}", s.Key.Year),
+                    Average = new SkillsAverages()
+                    {
+                        Stretching = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year).Sum(x => x.Stretching),
+                        FitnessSessionLowerBody = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year).Sum(x => x.FitnessSessionLowerBody),
+                        FitnessSessionUpperBody = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year).Sum(x => x.FitnessSessionUpperBody),
+                        FitnessSessionCore = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year).Sum(x => x.FitnessSessionCore),
+                        MentalTraining = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year).Sum(x => x.MentalTraining),
+                        AlignmentDrill = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year).Sum(x => x.AlignmentDrill),
+                        GreenReading = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year).Sum(x => x.GreenReading),
+                        CourseManagement = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year).Sum(x => x.CourseManagement),
+                        RulesQuiz = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year).Sum(x => x.RulesQuiz),
+                        VideoSwingAnalysis = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year).Sum(x => x.VideoSwingAnalysis),
+                        _18HolesWalk = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year).Sum(x => x._18HolesWalk),
+                        _9HolesWalk = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year).Sum(x => x._9HolesWalk),
+                        _18HolesPlayedWithGolfCar = studentSkills.Where(x => x.DateTime.Date.Year == s.Key.Year).Sum(x => x._18HolesPlayedWithGolfCar)
+                    }
+                }),
+                WeeklyGrouping =  new SkillGrouping
+                {
+                    Text = date.ToString("dd-MM-yy"),
+                    Average = new SkillsAverages()
+
+                    {
+                        Stretching = lastSevenDays.Sum(x => x.Stretching),
+                        FitnessSessionLowerBody = lastSevenDays.Sum(x => x.FitnessSessionLowerBody),
+                        FitnessSessionUpperBody = lastSevenDays.Sum(x => x.FitnessSessionUpperBody),
+                        FitnessSessionCore = lastSevenDays.Sum(x => x.FitnessSessionCore),
+                        MentalTraining = lastSevenDays.Sum(x => x.MentalTraining),
+                        AlignmentDrill = lastSevenDays.Sum(x => x.AlignmentDrill),
+                        GreenReading = lastSevenDays.Sum(x => x.GreenReading),
+                        CourseManagement = lastSevenDays.Sum(x => x.CourseManagement),
+                        RulesQuiz = lastSevenDays.Sum(x => x.RulesQuiz),
+                        VideoSwingAnalysis = lastSevenDays.Sum(x => x.VideoSwingAnalysis),
+                        _18HolesWalk = lastSevenDays.Sum(x => x._18HolesWalk),
+                        _9HolesWalk = lastSevenDays.Sum(x => x._9HolesWalk),
+                        _18HolesPlayedWithGolfCar = lastSevenDays.Sum(x => x._18HolesPlayedWithGolfCar)
+                    }
+                }
+            };
+        }
     }
 }

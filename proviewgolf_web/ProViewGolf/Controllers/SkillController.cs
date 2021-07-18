@@ -47,5 +47,15 @@ namespace ProViewGolf.Controllers
 
             return Ok(response);
         }
+        [HttpPost]
+        public IActionResult SkillsWithSum(FilterModel model)
+        {
+            var response = new Response
+            {
+                Data = _skillService.SkillsWithSum(model.StudentId, model.Date) ?? new SkillDto()
+            };
+
+            return Ok(response);
+        }
     }
 }

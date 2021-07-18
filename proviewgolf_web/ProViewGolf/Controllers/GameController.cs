@@ -42,7 +42,7 @@ namespace ProViewGolf.Controllers
         [HttpPost]
         public IActionResult PlayRoundScore(FilterModel model)
         {
-            var data = _gameService.GameScore(model.StudentId, model.Date, GameType.Tournament);
+            var data = _gameService.GameScore(model.StudentId, model.Date, GameType.PlayRounds);
             var response = new Response
             {
                 Data = data ?? new Game {GameType = GameType.PlayRounds}
@@ -62,11 +62,33 @@ namespace ProViewGolf.Controllers
 
             return Ok(response);
         }
+        [HttpPost]
+        public IActionResult TournamentScoreWithSum(FilterModel model)
+        {
+            var data = _gameService.GamesWithSum(model.StudentId, model.Date, GameType.Tournament);
+            var response = new Response
+            {
+                Data = data ?? new GameDto {GameType = GameType.Tournament}
+            };
+
+            return Ok(response);
+        }
 
         [HttpPost]
         public IActionResult PlayRoundScoreWithAverage(FilterModel model)
         {
             var data = _gameService.GamesWithAverage(model.StudentId, model.Date, GameType.PlayRounds);
+            var response = new Response
+            {
+                Data = data ?? new GameDto {GameType = GameType.PlayRounds}
+            };
+
+            return Ok(response);
+        }
+        [HttpPost]
+        public IActionResult PlayRoundScoreWithSum(FilterModel model)
+        {
+            var data = _gameService.GamesWithSum(model.StudentId, model.Date, GameType.PlayRounds);
             var response = new Response
             {
                 Data = data ?? new GameDto {GameType = GameType.PlayRounds}
