@@ -19,8 +19,8 @@ namespace ProViewGolf.Core.Services
         public dynamic IronStats(long studentId, DateTime date)
         {
             var ironStats = _dbo.ClubPractices
-                .Where(x => x.StudentId == studentId && (int) x.Club >= 100 && (int) x.Club < 200).ToList()
-                .GroupBy(x => new {x.Club, x.Ground}).ToList();
+                .Where(x => x.StudentId == studentId && (int)x.Club >= 100 && (int)x.Club < 200).ToList()
+                .GroupBy(x => new { x.Club, x.Ground }).ToList();
 
             return ironStats.Select(c =>
                 new
@@ -39,8 +39,8 @@ namespace ProViewGolf.Core.Services
         public dynamic WoodStats(long studentId, DateTime date)
         {
             var woodStats = _dbo.ClubPractices
-                .Where(x => x.StudentId == studentId && (int) x.Club >= 200 && (int) x.Club < 300).ToList()
-                .GroupBy(x => new {x.Club, x.Ground}).ToList();
+                .Where(x => x.StudentId == studentId && (int)x.Club >= 200 && (int)x.Club < 300).ToList()
+                .GroupBy(x => new { x.Club, x.Ground }).ToList();
 
             return woodStats.Select(c =>
                 new
@@ -61,6 +61,7 @@ namespace ProViewGolf.Core.Services
             var clubs = _dbo.ClubPractices.Where(x => x.StudentId == studentId);
             var shots = _dbo.ShotPractices.Where(x => x.StudentId == studentId);
             var games = _dbo.Games.Where(x => x.StudentId == studentId);
+            var skills = _dbo.Skills.Where(x => x.StudentId == studentId);
 
             return new
             {
@@ -76,7 +77,19 @@ namespace ProViewGolf.Core.Services
                 ProViewLevel = _dbo.Students.Find(studentId).ProViewLevel,
                 ProViewHcp = _dbo.Students.Find(studentId).ProViewHcp,
 
-                Skills = 0,
+                Skills = skills.Sum(x => x.Stretching +
+                x.FitnessSessionLowerBody + 
+                x.FitnessSessionUpperBody +
+                x.FitnessSessionCore +
+                x.MentalTraining +
+                x.AlignmentDrill +
+                x.GreenReading +
+                x.CourseManagement +
+                x.RulesQuiz +
+                x.VideoSwingAnalysis +
+                x._18HolesWalk +
+                x._9HolesWalk +
+                x._18HolesPlayedWithGolfCar),
 
                 HoursPlayedRounds = games.Where(x => x.GameType == GameType.PlayRounds).Sum(x => x.GameDuration),
                 TournamentRoundsPlayed = games.Count(x => x.GameType == GameType.Tournament),
@@ -84,7 +97,7 @@ namespace ProViewGolf.Core.Services
                 DistanceWalked = games.Sum(x => x.DistanceWalked),
                 HCPImprovement = games.OrderByDescending(x => x.GameId).FirstOrDefault()?.NewHcp ?? 0,
                 StrokesImprovement = games.Any() ? games.Average(a => a.Strokes) : 0,
-                PuttingImprovement = games.Any() ? games.Average(a => a.PuttingStrokes): 0
+                PuttingImprovement = games.Any() ? games.Average(a => a.PuttingStrokes) : 0
             };
         }
     }
