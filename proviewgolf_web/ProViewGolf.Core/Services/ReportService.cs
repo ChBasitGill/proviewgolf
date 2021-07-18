@@ -32,7 +32,7 @@ namespace ProViewGolf.Core.Services
             var chipRun = shots.Where(x => x.ShotCategory == ShotCategory.ChipRun).ToList();
 
             var onCourse = shots.Where(x =>
-                x.ShotCategory == ShotCategory.PlayHole || x.ShotCategory == ShotCategory.Scrambling).ToList();
+                x.ShotCategory == ShotCategory.PlayHole).ToList();
 
             var bunker = shots
                 .Where(x => x.ShotCategory == ShotCategory.Fairway || x.ShotCategory == ShotCategory.GreenSide)
@@ -84,10 +84,13 @@ namespace ProViewGolf.Core.Services
                 Drives = drives.Sum(i => i.BallsAmount),
                 DrivesRating = drives.Average(i => i.Rating, 1),
 
-                AmountOfShots = pitch.Sum(i => i.Shots) + chip.Sum(i => i.Shots) + chipRun.Sum(i => i.Shots) +
-                                shots.Sum(i => i.Shots) + bunker.Sum(i => i.Shots) + shortIron.Sum(i => i.BallsAmount) +
+                AmountOfShots = shortIron.Sum(i => i.BallsAmount) +
                                 iron.Sum(i => i.BallsAmount) + wood.Sum(i => i.BallsAmount) +
                                 drives.Sum(i => i.BallsAmount),
+                //AmountOfShots = pitch.Sum(i => i.Shots) + chip.Sum(i => i.Shots) + chipRun.Sum(i => i.Shots) +
+                //                shots.Sum(i => i.Shots) + bunker.Sum(i => i.Shots) + shortIron.Sum(i => i.BallsAmount) +
+                //                iron.Sum(i => i.BallsAmount) + wood.Sum(i => i.BallsAmount) +
+                //                drives.Sum(i => i.BallsAmount),
 
                 Fitness = skills.Sum(i => i.FitnessSessionCore + i.FitnessSessionLowerBody + i.FitnessSessionUpperBody),
 
