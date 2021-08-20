@@ -187,7 +187,7 @@ namespace ProViewGolf.Core.Services
                             XAxis = x.DateTime.ToString("ddd").ToUpper(),
                             Shots = x.Shots,
                             GoodShots = x.GoodShots,
-                            YAxis = x.GoodShots / x.Shots * 100,
+                            YAxis = x.GoodShots * 100 / x.Shots,
                         }).ToList();
 
                 case Duration.Month:

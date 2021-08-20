@@ -23,7 +23,7 @@ namespace ProViewGolf.Core.Services
             try
             {
                 var entity = _dbo.Bookings.AsNoTracking().FirstOrDefault(x =>
-                    x.BookingDate.Date == booking.BookingDate &&
+                    x.BookingDate.Date == booking.BookingDate && x.TimeSlot == booking.TimeSlot &&
                     x.ProRefId == booking.ProRefId);
                 msg = "Booking updated successfully";
                 if (entity != null)

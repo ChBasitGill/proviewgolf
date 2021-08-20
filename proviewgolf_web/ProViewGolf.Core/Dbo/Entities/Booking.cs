@@ -16,6 +16,7 @@ namespace ProViewGolf.Core.Dbo.Entities
         public long BookingId {get;set;}
         public int Status {get;set;} = (int)BookingStatus.Active;
          public DateTime BookingDate {get;set;}
+        public TimeSpan TimeSlot { get; set; }
         public long StudentRefId { get; set; }
         public virtual Student Student { get; set; }
         public long ProRefId { get; set; }

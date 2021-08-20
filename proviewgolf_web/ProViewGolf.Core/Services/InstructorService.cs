@@ -167,5 +167,26 @@ namespace ProViewGolf.Core.Services
                 VideoAnalysis = _dbo.Skills.Sum(x => x.VideoSwingAnalysis) / 60
             };
         }
+        public dynamic InstructorPro(long StudentId)
+        {
+            var pro = _dbo.Students.Include(o => o.Pro).FirstOrDefault(x => x.UserId == StudentId);
+
+            if (pro.ProRefId == null) return null;
+            else
+            {
+                var pro2 = _dbo.Pros.FirstOrDefault(x => x.UserId == pro.ProRefId);
+                return new
+                {
+                    pro2.UserId,
+                    pro2.Profile.LastName,
+                    pro2.Profile.FirstName,
+                    pro2.Email,
+                    pro2.Profile.Age,
+                    pro2.Profile.Gender,
+                    pro2.Profile.Hcp
+                };
+            }
+
+        }
     }
 }

@@ -99,5 +99,19 @@ namespace ProViewGolf.Controllers
 
             return Ok(response);
         }
+        [HttpGet]
+        public IActionResult InstructorProfile(long UserId)
+        {
+            var response = new Response
+            {
+                Data = _service.InstructorPro(UserId)
+            };
+
+            if (response.Data == null)
+                response.Status = ResponseStatus.NoResult;
+
+            return Ok(response);
+        }
+
     }
 }
